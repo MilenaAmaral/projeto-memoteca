@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     formularioPensamento.addEventListener('submit', manipularSubmissaoFormulario);
     botaoCancelar.addEventListener('click', () => {
-        formularioPensamento.reset();
+        ui.limparFormulario();
     });
 });
 
