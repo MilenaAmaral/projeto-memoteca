@@ -1,6 +1,14 @@
 import api from "./api.js";
 
 const ui = {
+
+    async prencherFormulario(pensamentoId) {
+        const pensamento = await api.buscarPensamentoPorId(pensamentoId)
+        document.getElementById("pensamento-id").value = pensamento.id
+        document.getElementById("pensamento-conteudo").value = pensamento.conteudo
+        document.getElementById("pensamento-autoria").value = pensamento.autoria
+    },
+
     limparFormulario() {
         document.getElementById('pensamento-form').reset();
     },
