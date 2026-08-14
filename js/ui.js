@@ -43,9 +43,23 @@ const ui = {
         pensamentoAutoria.classList.add('pensamento-autoria');
         pensamentoAutoria.textContent = pensamento.autoria;
 
+        const botaoEditar = document.createElement('button');
+        botaoEditar.classList.add('botao-editar');
+        botaoEditar.onclick = () => ui.prencherFormulario(pensamento.id)
+
+        const iconeEditar = document.creatElement("img")
+        iconeEditar.src = "assets/imagens/icone-editar.png"
+        iconeEditar.alt = "Editar"
+        botaoEditar.appendChild(iconeEditar)
+        
+        const icones = document.createElement("div")
+        icones.classList.add("icones")
+        icones.appendChild(botaoEditar)
+
         li.appendChild(iconeAspas);
         li.appendChild(pensamentoConteudo);
         li.appendChild(pensamentoAutoria);
+        li.appendChild(icones);
         listaPensamentos.appendChild(li);
     }
 }
