@@ -9,6 +9,7 @@ const api = {
             throw error;
         }
     },
+
     async salvarPensamento(pensamento) {
         try {
             const response = await fetch('http://localhost:3001/pensamentos', {
@@ -23,7 +24,34 @@ const api = {
             alert('Erro ao salvar pensamento');
             throw error;
         }
-    }
+    },
+
+        async buscarPensamentoPorId(id) {
+        try {
+            const response = await fetch(`http://localhost:3001/pensamentos/${id}`);
+            return await response.json();
+        } catch (error) {
+            alert('Erro ao buscar pensamentos');
+            throw error;
+        }
+    },
+
+        async editarPensamento(pensamento) {
+        try {
+            const response = await fetch(`http://localhost:3001/pensamentos/${pensamento.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(pensamento)
+            })
+            return await response.json();
+        } catch (error) {
+            alert('Erro ao editar pensamento');
+            throw error;
+        }
+    },
+
 };
 
 export default api;
