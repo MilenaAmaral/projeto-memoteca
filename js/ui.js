@@ -47,7 +47,7 @@ const ui = {
         botaoEditar.classList.add('botao-editar');
         botaoEditar.onclick = () => ui.prencherFormulario(pensamento.id)
 
-        const iconeEditar = document.creatElement("img")
+        const iconeEditar = document.createElement("img")
         iconeEditar.src = "assets/imagens/icone-editar.png"
         iconeEditar.alt = "Editar"
         botaoEditar.appendChild(iconeEditar)
