@@ -1,8 +1,10 @@
 /* =========================================================
    1. VARIÁVEIS CSS
    ========================================================= */
+
+/* --- Tema ESCURO (padrão) --- */
 :root {
-  /* Fundos (dark) */
+  /* Fundos */
   --bg-void: #05070d;
   --bg-primario: #070b14;
   --bg-secundario: #0b1120;
@@ -13,12 +15,14 @@
   --ciano-forte: #06b6d4;
   --azul-eletrico: #3b82f6;
   --roxo-neon: #8b5cf6;
+  --acento-texto: var(--ciano);
 
   --gradiente-neon: linear-gradient(120deg, var(--ciano) 0%, var(--azul-eletrico) 55%, var(--roxo-neon) 100%);
   --gradiente-neon-suave: linear-gradient(120deg, rgba(34, 211, 238, 0.16), rgba(139, 92, 246, 0.10));
 
   /* Texto */
   --branco: #f8fafc;
+  --titulo-cor: #f8fafc;
   --texto-primario: #e7ecf5;
   --texto-secundario: #93a2bb;
   --texto-terciario: #5c6b85;
@@ -28,6 +32,12 @@
   --vidro-bg-hover: rgba(255, 255, 255, 0.055);
   --vidro-borda: rgba(255, 255, 255, 0.09);
   --vidro-borda-hover: rgba(34, 211, 238, 0.45);
+
+  /* Grid de fundo */
+  --grid-linha: rgba(148, 163, 184, 0.06);
+
+  /* Ícones (editar/excluir) — inverte pra branco em fundo escuro */
+  --filtro-icone: brightness(0) invert(1);
 
   /* Compatibilidade com nomes antigos */
   --Baby-blue: #cfe6ff;
@@ -59,6 +69,35 @@
   --transicao-rapida: 0.15s ease;
   --transicao-suave: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transicao-lenta: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  --transicao-tema: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* --- Tema CLARO (ativado via classe .tema-claro no <body>) --- */
+body.tema-claro {
+  --bg-void: #f6f8fc;
+
+  --acento-texto: var(--ciano-forte);
+
+  --titulo-cor: #0f172a;
+  --texto-primario: #1e2733;
+  --texto-secundario: #5b6a85;
+  --texto-terciario: #8896ab;
+
+  --vidro-bg: rgba(15, 23, 42, 0.025);
+  --vidro-bg-hover: rgba(15, 23, 42, 0.045);
+  --vidro-borda: rgba(15, 23, 42, 0.09);
+  --vidro-borda-hover: rgba(6, 182, 212, 0.45);
+
+  --grid-linha: rgba(15, 23, 42, 0.045);
+
+  --filtro-icone: none;
+
+  --sombra-sm: 0 4px 16px rgba(15, 23, 42, 0.06);
+  --sombra-md: 0 16px 40px rgba(15, 23, 42, 0.08);
+  --sombra-lg: 0 30px 70px rgba(15, 23, 42, 0.1);
+  --glow-ciano: 0 0 0 1px rgba(6, 182, 212, 0.25), 0 0 20px rgba(6, 182, 212, 0.12);
+  --glow-foco: 0 0 0 4px rgba(6, 182, 212, 0.14), 0 0 16px rgba(6, 182, 212, 0.16);
 }
 
 /* =========================================================
@@ -83,6 +122,7 @@ body {
   color: var(--texto-primario);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: var(--transicao-tema);
 }
 
 main {
@@ -124,11 +164,12 @@ body::before {
   inset: 0;
   z-index: -2;
   background-image:
-    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    linear-gradient(var(--grid-linha) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-linha) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0, 0, 0, 0.8), transparent 75%);
   pointer-events: none;
+  transition: var(--transicao-tema);
 }
 
 /* =========================================================
@@ -136,7 +177,7 @@ body::before {
    ========================================================= */
 h2,
 h3 {
-  color: var(--branco);
+  color: var(--titulo-cor);
   text-align: center;
   font-family: var(--fonte-base);
   font-size: 38px;
@@ -266,7 +307,7 @@ header .logo h1::after {
   margin-top: -64px;
   position: relative;
   z-index: 2;
-  transition: border-color var(--transicao-suave), box-shadow var(--transicao-suave);
+  transition: border-color var(--transicao-suave), box-shadow var(--transicao-suave), var(--transicao-tema);
 }
 
 #form-container:hover {
@@ -281,7 +322,7 @@ header .logo h1::after {
 
 #pensamento-form label {
   margin-bottom: 12px;
-  color: var(--ciano);
+  color: var(--acento-texto);
   font-family: var(--fonte-mono);
   font-size: 14px;
   font-style: normal;
@@ -433,8 +474,9 @@ header .logo h1::after {
 .botao-excluir img {
   width: 18px;
   height: 18px;
-  filter: brightness(0) invert(1);
+  filter: var(--filtro-icone);
   opacity: 0.85;
+  transition: filter var(--transicao-suave);
 }
 
 /* =========================================================
@@ -493,7 +535,7 @@ span {
   word-wrap: break-word;
   hyphens: auto;
   transition: transform var(--transicao-suave), box-shadow var(--transicao-suave),
-    border-color var(--transicao-suave), background var(--transicao-suave);
+    border-color var(--transicao-suave), background var(--transicao-suave), var(--transicao-tema);
 }
 
 .li-pensamento:hover {
@@ -537,7 +579,7 @@ span {
 .pensamento-autoria {
   font-size: 14px;
   font-weight: 600;
-  color: var(--ciano);
+  color: var(--acento-texto);
   margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -561,7 +603,7 @@ span {
 .mensagem-vazia {
   display: none;
   text-align: center;
-  color: var(--branco);
+  color: var(--titulo-cor);
   margin-top: 40px;
   padding: 64px 32px;
   background: var(--vidro-bg);
@@ -571,6 +613,7 @@ span {
   border-radius: var(--raio-lg);
   max-width: 480px;
   width: 100%;
+  transition: var(--transicao-tema);
 }
 
 .mensagem-vazia img {
@@ -607,7 +650,52 @@ footer {
 }
 
 /* =========================================================
-   11. RESPONSIVIDADE
+   11. BOTÃO DE ALTERNÂNCIA DE TEMA (novo — não existia no HTML original)
+   ========================================================= */
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 999;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--vidro-borda);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--branco);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transicao-rapida), box-shadow var(--transicao-suave),
+    border-color var(--transicao-suave), background var(--transicao-suave);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px) scale(1.05);
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.25);
+}
+
+.theme-toggle:active {
+  transform: translateY(0) scale(0.97);
+}
+
+@media (max-width: 560px) {
+  .theme-toggle {
+    top: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   12. RESPONSIVIDADE
    ========================================================= */
 
 /* Notebook / telas médias-grandes */
