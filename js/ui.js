@@ -14,14 +14,23 @@ const ui = {
     },
 
     async renderizarPensamentos() {
-        const listaPensamentos = document.getElementById('lista-pensamentos');
-        listaPensamentos.innerHTML = ""
+        const listaPensamentos = document.getElementById("lista-pensamentos");
+        const mensagemVazia = document.getElementById("mensagem-vazia");
+
+        listaPensamentos.innerHTML = "";
 
         try {
             const pensamentos = await api.buscarPensamentos();
-            pensamentos.forEach(ui.adicionarPensamentoNaLista);
-        } catch  {
-            alert('Erro ao renderizar pensamentos');
+
+            if (pensamentos.length === 0) {
+                mensagemVazia.style.display = "block";
+            } else {
+                mensagemVazia.style.display = "none";
+                pensamentos.forEach(ui.adicionarPensamentoNaLista);
+            }
+
+        } catch {
+            alert("Erro ao renderizar pensamentos");
         }
     },
 
@@ -69,7 +78,7 @@ const ui = {
         iconeExcluir.alt = "Excluir"
         botaoExcluir.appendChild(iconeExcluir)
 
-        
+
         const icones = document.createElement("div");
         icones.classList.add("icones");
         icones.appendChild(botaoEditar);
