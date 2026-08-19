@@ -1,22 +1,88 @@
+/* =========================================================
+   1. VARIÁVEIS CSS
+   ========================================================= */
+:root {
+  /* Fundos (dark) */
+  --bg-void: #05070d;
+  --bg-primario: #070b14;
+  --bg-secundario: #0b1120;
+  --bg-terciario: #101a30;
+
+  /* Acentos neon */
+  --ciano: #22d3ee;
+  --ciano-forte: #06b6d4;
+  --azul-eletrico: #3b82f6;
+  --roxo-neon: #8b5cf6;
+
+  --gradiente-neon: linear-gradient(120deg, var(--ciano) 0%, var(--azul-eletrico) 55%, var(--roxo-neon) 100%);
+  --gradiente-neon-suave: linear-gradient(120deg, rgba(34, 211, 238, 0.16), rgba(139, 92, 246, 0.10));
+
+  /* Texto */
+  --branco: #f8fafc;
+  --texto-primario: #e7ecf5;
+  --texto-secundario: #93a2bb;
+  --texto-terciario: #5c6b85;
+
+  /* Vidro / glass */
+  --vidro-bg: rgba(255, 255, 255, 0.035);
+  --vidro-bg-hover: rgba(255, 255, 255, 0.055);
+  --vidro-borda: rgba(255, 255, 255, 0.09);
+  --vidro-borda-hover: rgba(34, 211, 238, 0.45);
+
+  /* Compatibilidade com nomes antigos */
+  --Baby-blue: #cfe6ff;
+  --Azul-Dark: #05070d;
+  --Cinza-claro: #101a30;
+  --Cinza-medio: #93a2bb;
+  --Cinza: #e7ecf5;
+
+  /* Tipografia */
+  --fonte-base: "Poppins", "Segoe UI", sans-serif;
+  --fonte-mono: "Roboto Mono", "JetBrains Mono", monospace;
+
+  /* Bordas e raios */
+  --raio-sm: 10px;
+  --raio-md: 16px;
+  --raio-lg: 24px;
+  --raio-pill: 999px;
+  --borda-vidro: 1px solid var(--vidro-borda);
+
+  /* Sombras / glow */
+  --sombra-sm: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --sombra-md: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --sombra-lg: 0 30px 80px rgba(0, 0, 0, 0.55);
+  --glow-ciano: 0 0 0 1px rgba(34, 211, 238, 0.3), 0 0 24px rgba(34, 211, 238, 0.18);
+  --glow-ciano-forte: 0 0 0 1px rgba(34, 211, 238, 0.55), 0 0 40px rgba(34, 211, 238, 0.3);
+  --glow-foco: 0 0 0 4px rgba(34, 211, 238, 0.15), 0 0 20px rgba(34, 211, 238, 0.25);
+
+  /* Transições */
+  --transicao-rapida: 0.15s ease;
+  --transicao-suave: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transicao-lenta: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================================
+   2. RESET / BASE
+   ========================================================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --Baby-blue: #DBE4EF;
-  --Azul-Dark: #041832;
-  --Cinza-claro: #EDF0F4;
-  --Cinza-medio: #8F8F8F;
-  --Cinza: #444;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--fonte-base);
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  background: var(--bg-void);
+  color: var(--texto-primario);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 main {
@@ -27,7 +93,12 @@ main {
   align-items: center;
   position: relative;
   min-height: 280vh;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+  gap: 8px;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(34, 211, 238, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 88% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+    var(--bg-void);
 }
 
 .overlay {
@@ -36,120 +107,224 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/assets/imagens/background.png'); 
+  background-image: url('/assets/imagens/background.png');
   background-size: cover;
-  opacity: 0.5;
+  opacity: 0.03;
   z-index: -1;
 }
 
 .overlay-color {
-  background-color: #F4F4F4;
+  background-color: var(--bg-void);
 }
 
+/* Grid tecnológico sutil, fixo no fundo de toda a página */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0, 0, 0, 0.8), transparent 75%);
+  pointer-events: none;
+}
 
+/* =========================================================
+   3. TIPOGRAFIA
+   ========================================================= */
+h2,
+h3 {
+  color: var(--branco);
+  text-align: center;
+  font-family: var(--fonte-base);
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+
+/* =========================================================
+   4. HEADER
+   ========================================================= */
 header {
-  padding: 112px 240px 112px 360px;
-  background: var(--Azul-Dark, #041832);
+  padding: 100px 120px;
+  background:
+    radial-gradient(circle at 18% 25%, rgba(34, 211, 238, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 82% 75%, rgba(139, 92, 246, 0.14) 0%, transparent 50%),
+    linear-gradient(160deg, var(--bg-primario) 0%, var(--bg-secundario) 55%, var(--bg-terciario) 100%);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--vidro-borda);
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6), transparent 75%);
+  pointer-events: none;
+}
+
+/* linha de "scan" horizontal decorativa no topo do header */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradiente-neon);
+  opacity: 0.7;
+  z-index: 2;
 }
 
 .conteudo-cabecalho {
   display: flex;
   justify-content: center;
-  gap: 32px;
+  gap: 64px;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 header .logo {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 32px;
 }
 
 header .logo img {
-  max-width: 200px;
+  max-width: 180px;
+  filter: drop-shadow(0 0 28px rgba(34, 211, 238, 0.35));
 }
 
 header .logo h1 {
-  color: var(--Baby-blue, #DBE4EF);
-  font-family: "Poppins", sans-serif;
-  align-self: center;
-  font-size: 52px;
+  color: var(--branco);
+  font-family: var(--fonte-base);
+  align-self: flex-start;
+  font-size: 46px;
   font-weight: 300;
-  line-height: 67.6px;
-}
-
-.imagem-cabecalho img{
-  max-width: 500px;
-}
-
-footer {
-  padding: 32px 360px;
-  background: #041832;
-  color: var(--Baby-blue, #DBE4EF);
-  text-align: center;
-  width: 100%;
+  line-height: 1.28;
+  letter-spacing: -0.5px;
   position: relative;
-  left: 0;
+  background: linear-gradient(100deg, var(--branco) 40%, var(--ciano) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-h2, h3 {
-  color: var(--Azul-Dark, #041832);
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-  font-size: 44px;
+header .logo h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 24px;
+  border-radius: var(--raio-pill);
+  background: var(--gradiente-neon);
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.6);
+}
+
+.imagem-cabecalho img {
+  max-width: 420px;
+  filter: drop-shadow(0 20px 60px rgba(34, 211, 238, 0.18));
+  transition: transform var(--transicao-lenta), filter var(--transicao-lenta);
+}
+
+.imagem-cabecalho img:hover {
+  transform: translateY(-6px);
+  filter: drop-shadow(0 26px 70px rgba(34, 211, 238, 0.3));
+}
+
+/* =========================================================
+   5. FORMULÁRIO
+   ========================================================= */
+#form-container {
+  display: flex;
+  padding: 48px 48px;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  align-self: center;
+  justify-content: center;
+  border-radius: var(--raio-lg);
+  background: var(--vidro-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: var(--borda-vidro);
+  box-shadow: var(--sombra-md);
+  width: 100%;
+  max-width: 712px;
+  margin-top: -64px;
+  position: relative;
+  z-index: 2;
+  transition: border-color var(--transicao-suave), box-shadow var(--transicao-suave);
+}
+
+#form-container:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+#pensamento-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#pensamento-form label {
+  margin-bottom: 12px;
+  color: var(--ciano);
+  font-family: var(--fonte-mono);
+  font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
-#form-container {
-  display: flex;
-  padding: 48px 40px;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  align-self: center;
-  justify-content: center;
-  border-radius: 16px;
-  background: #FFF;
-  box-shadow: 8px 8px 20px 0px rgba(4, 24, 50, 0.08);
-  width: 100%;
-  max-width: 712px;
-  margin-top: 40px;
-}
-
- #pensamento-form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-#pensamento-conteudo, #pensamento-autoria {
-  padding: 16px;
-  border-radius: 8px;
-  background: var(--Cinza-claro, #EDF0F4);
-  word-wrap: break-word; 
-  overflow-wrap: break-word; 
+#pensamento-conteudo,
+#pensamento-autoria {
+  padding: 16px 18px;
+  border-radius: var(--raio-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid var(--vidro-borda);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  transition: border-color var(--transicao-suave), box-shadow var(--transicao-suave),
+    background var(--transicao-suave);
 }
 
 #pensamento-conteudo {
   min-height: 80px;
+  resize: vertical;
 }
 
-#pensamento-form label {
-  margin-bottom: 16px;
-  color: var(--Azul-Dark, #041832);
-  font-family: "Poppins", sans-serif;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+#pensamento-conteudo:hover,
+#pensamento-autoria:hover {
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
-#pensamento-conteudo::placeholder,  #pensamento-autoria::placeholder{
-  color: var(--Cinza-medio, #8F8F8F);
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
+#pensamento-conteudo:focus,
+#pensamento-autoria:focus {
+  border-color: var(--ciano);
+  box-shadow: var(--glow-foco);
+  background: rgba(34, 211, 238, 0.04);
+}
+
+#pensamento-conteudo::placeholder,
+#pensamento-autoria::placeholder {
+  color: var(--texto-terciario);
+  font-family: var(--fonte-base);
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -160,45 +335,120 @@ h2, h3 {
   margin-bottom: 24px;
   outline: none;
   border-style: none;
-  font-size: 20px;
-  font-family: "Poppins", sans-serif;
+  background: transparent;
+  font-size: 16px;
+  font-family: var(--fonte-base);
+  color: var(--texto-primario);
 }
 
 .form-botoes {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  padding-top: 16px;
-} 
+  gap: 12px;
+  padding-top: 8px;
+}
 
-#botao-salvar, #botao-cancelar {
-  padding: 8px 32px;
-  border-radius: 32px;
-  color: var(--Baby-blue, #DBE4EF);
-  font-family: "Poppins", sans-serif;
-  font-size: 22px;
+/* =========================================================
+   6. BOTÕES
+   ========================================================= */
+#botao-salvar,
+#botao-cancelar {
+  padding: 12px 36px;
+  border-radius: var(--raio-pill);
+  font-family: var(--fonte-base);
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  cursor: pointer;
+  border: none;
+  transition: transform var(--transicao-rapida), box-shadow var(--transicao-suave),
+    background var(--transicao-suave), color var(--transicao-suave), border-color var(--transicao-suave);
 }
 
 #botao-salvar {
-  background: var(--Azul-Dark, #041832);
+  background: var(--gradiente-neon);
+  color: var(--bg-void);
   min-width: 160px;
+  box-shadow: 0 10px 30px rgba(34, 211, 238, 0.25);
+}
+
+#botao-salvar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(34, 211, 238, 0.4), 0 0 30px rgba(139, 92, 246, 0.25);
+}
+
+#botao-salvar:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(34, 211, 238, 0.3);
 }
 
 #botao-cancelar {
-  color: var(--Azul-Dark, #041832);
+  background: transparent;
+  color: var(--texto-secundario);
+  border: 1.5px solid var(--vidro-borda);
 }
 
+#botao-cancelar:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--branco);
+}
+
+.botao-editar,
+.botao-excluir {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--vidro-borda);
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+  border-radius: var(--raio-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transicao-suave), border-color var(--transicao-suave),
+    transform var(--transicao-rapida), box-shadow var(--transicao-suave);
+  opacity: 0.8;
+}
+
+.botao-editar:hover,
+.botao-excluir:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.botao-editar:hover {
+  background: rgba(34, 211, 238, 0.1);
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.25);
+}
+
+.botao-excluir:hover {
+  background: rgba(244, 63, 94, 0.1);
+  border-color: rgba(244, 63, 94, 0.5);
+  box-shadow: 0 0 16px rgba(244, 63, 94, 0.2);
+}
+
+.botao-editar img,
+.botao-excluir img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+/* =========================================================
+   7. MURAL DE PENSAMENTOS
+   ========================================================= */
 #lista-pensamentos-container {
   width: 100%;
   max-width: 1200px;
   margin: 40px 0;
+  padding: 0 24px;
 }
 
 #lista-pensamentos-container h3 {
-  margin: 40px 0;
+  margin: 56px 0 40px 0;
 }
 
 #lista-pensamentos {
@@ -206,99 +456,292 @@ h2, h3 {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  row-gap: 32px;
+  justify-content: flex-start;
+  gap: 28px;
 }
 
+/* Divisor decorativo (seletor global "span" já existente na estrutura) */
+span {
+  width: 64px;
+  height: 3px;
+  background: var(--gradiente-neon);
+  border-radius: var(--raio-pill);
+  margin: 72px auto 40px auto;
+  display: block;
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.4);
+}
+
+/* =========================================================
+   8. CARDS
+   ========================================================= */
 .li-pensamento {
   position: relative;
-  padding: 16px;
-  background: var(--Branco, #FFF);
-  box-shadow: 8px 8px 0px 0px #154580;
-  flex: 1 1 calc(33.333% - 24px);
-  max-width: calc(33.333% - 24px);
-  min-width: 384px;
-  min-height: 315px; 
+  padding: 32px 28px 24px 28px;
+  background: var(--vidro-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: var(--borda-vidro);
+  border-radius: var(--raio-md);
+  box-shadow: var(--sombra-sm);
+  flex: 1 1 calc(33.333% - 28px);
+  max-width: calc(33.333% - 28px);
+  min-width: 320px;
+  min-height: 280px;
   display: flex;
   flex-direction: column;
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
+  transition: transform var(--transicao-suave), box-shadow var(--transicao-suave),
+    border-color var(--transicao-suave), background var(--transicao-suave);
+}
+
+.li-pensamento:hover {
+  transform: translateY(-6px);
+  background: var(--vidro-bg-hover);
+  border-color: var(--vidro-borda-hover);
+  box-shadow: var(--glow-ciano);
 }
 
 .icone-aspas {
   position: absolute;
-  top: 32px;
-  left: 32px;
-  width: 64px;
-  height: 50px;
+  top: 28px;
+  left: 28px;
+  width: 40px;
+  height: 32px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.35));
 }
 
-.pensamento-conteudo, .pensamento-autoria {
-  margin-left: 20px; 
-  color: var(--Cinza, #444);
-  font-family: "Roboto Mono";
+.pensamento-conteudo,
+.pensamento-autoria {
+  margin-left: 0;
+  color: var(--texto-primario);
+  font-family: var(--fonte-mono);
   font-style: normal;
-  line-height: normal;
-  margin-bottom: 16px; 
+  line-height: 1.6;
+  margin-bottom: 16px;
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
 }
 
 .pensamento-conteudo {
-  margin-top: 96px; 
-  font-size: 20px;
+  margin-top: 64px;
+  font-size: 17px;
   font-weight: 400;
+  flex: 1;
+  color: var(--texto-primario);
 }
 
 .pensamento-autoria {
-  font-size: 22px;
+  font-size: 14px;
   font-weight: 600;
+  color: var(--ciano);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pensamento-autoria::before {
+  content: "— ";
+  color: var(--texto-terciario);
 }
 
 .icones {
   position: absolute;
   bottom: 16px;
   right: 16px;
+  display: flex;
 }
 
-.botao-editar, .botao-excluir {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  margin-left: 8px;
-}
-
-.botao-editar img, .botao-excluir img {
-  width: 20px;
-  height: 20px;
-}
-
-span {
-  width: 180px;
-  height: 1px;
-  background: #041832;
-  margin: 96px 0 48px 0;
-}
-
+/* =========================================================
+   9. EMPTY STATE
+   ========================================================= */
 .mensagem-vazia {
   display: none;
   text-align: center;
-  color: var(--Azul-Dark, #041832);
+  color: var(--branco);
   margin-top: 40px;
+  padding: 64px 32px;
+  background: var(--vidro-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px dashed var(--vidro-borda);
+  border-radius: var(--raio-lg);
+  max-width: 480px;
+  width: 100%;
 }
 
 .mensagem-vazia img {
-  max-width: 200px;
-  margin-bottom: 20px;
+  max-width: 160px;
+  margin-bottom: 28px;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.25));
 }
 
 .mensagem-vazia p {
-  font-family: "Poppins", sans-serif;
-  font-size: 22px;
+  font-family: var(--fonte-base);
+  font-size: 18px;
   font-weight: 400;
-  line-height: 33px;
+  line-height: 1.6;
   text-align: center;
+  color: var(--texto-secundario);
+}
+
+/* =========================================================
+   10. FOOTER
+   ========================================================= */
+footer {
+  padding: 32px 120px;
+  background: var(--bg-primario);
+  color: var(--texto-secundario);
+  text-align: center;
+  width: 100%;
+  position: relative;
+  left: 0;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  border-top: 1px solid var(--vidro-borda);
+  font-family: var(--fonte-mono);
+}
+
+/* =========================================================
+   11. RESPONSIVIDADE
+   ========================================================= */
+
+/* Notebook / telas médias-grandes */
+@media (max-width: 1200px) {
+  header {
+    padding: 88px 64px;
+  }
+
+  #lista-pensamentos-container {
+    max-width: 960px;
+  }
+
+  .li-pensamento {
+    flex: 1 1 calc(50% - 28px);
+    max-width: calc(50% - 28px);
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  header {
+    padding: 72px 40px;
+  }
+
+  .conteudo-cabecalho {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  header .logo {
+    align-items: center;
+  }
+
+  header .logo h1 {
+    font-size: 34px;
+    align-self: center;
+    text-align: center;
+  }
+
+  header .logo h1::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .imagem-cabecalho img {
+    max-width: 300px;
+  }
+
+  h2,
+  h3 {
+    font-size: 28px;
+  }
+
+  #form-container {
+    max-width: 90%;
+    padding: 40px 28px;
+    margin-top: -40px;
+  }
+
+  .li-pensamento {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+/* Celular */
+@media (max-width: 560px) {
+  main {
+    padding-top: 0;
+  }
+
+  header {
+    padding: 56px 24px;
+  }
+
+  header .logo img {
+    max-width: 130px;
+  }
+
+  header .logo h1 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .imagem-cabecalho img {
+    max-width: 220px;
+  }
+
+  h2,
+  h3 {
+    font-size: 22px;
+  }
+
+  #form-container {
+    padding: 28px 20px;
+    gap: 24px;
+    border-radius: var(--raio-md);
+  }
+
+  #pensamento-form label {
+    font-size: 13px;
+  }
+
+  .form-botoes {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  #botao-salvar,
+  #botao-cancelar {
+    width: 100%;
+  }
+
+  #lista-pensamentos-container {
+    padding: 0 16px;
+  }
+
+  #lista-pensamentos-container h3 {
+    margin: 40px 0 28px 0;
+  }
+
+  .li-pensamento {
+    padding: 28px 20px 20px 20px;
+    min-height: unset;
+  }
+
+  .pensamento-conteudo {
+    margin-top: 56px;
+    font-size: 16px;
+  }
+
+  footer {
+    padding: 24px 24px;
+  }
 }
