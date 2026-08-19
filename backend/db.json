@@ -2,13 +2,13 @@
   "pensamentos": [
     {
       "id": "2a56",
-      "conteudo": "Vc faz TI? Conserta meu celular!",
-      "autoria": "Grupo da família"
+      "conteudo": "PRECISO DE DINHEIRO",
+      "autoria": "PRIORIDADE"
     },
     {
       "id": "4c7d",
-      "conteudo": "Da vida reclama, mas sem ela não vive!",
-      "autoria": "Mestre Yoda"
+      "conteudo": "LULU QUER COLO",
+      "autoria": "LULU"
     },
     {
       "id": "5b8a",
@@ -69,6 +69,11 @@
       "conteudo": "   Um dia lindo, para salvar vidas",
       "autoria": "HOJE",
       "id": "Jb9ZZ4JdYtQ"
+    },
+    {
+      "conteudo": "Atividades executadas da rotina",
+      "autoria": "DIA LINDO",
+      "id": "rwWNmqRo87k"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
