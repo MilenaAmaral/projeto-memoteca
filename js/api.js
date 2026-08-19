@@ -52,6 +52,18 @@ const api = {
         }
     },
 
+            async excluirPensamento(id) {
+        try {
+            const response = await fetch(`http://localhost:3001/pensamentos/${id}`, {
+                method: 'DELETE'
+            })
+        } 
+        catch (error) {
+            alert('Erro ao excluir um pensamento');
+            throw error;
+        }
+    },
+
 };
 
 export default api;

@@ -2,73 +2,78 @@
   "pensamentos": [
     {
       "id": "2a56",
-      "conteudo": "Vc faz TI? Conserta meu celular!",
-      "autoria": "Grupo da família"
+      "conteudo": "\"Todo código começa com uma ideia, mas é a prática que transforma a ideia em solução.\"",
+      "autoria": "Código em prática"
     },
     {
       "id": "4c7d",
-      "conteudo": "Da vida reclama, mas sem ela não vive!",
-      "autoria": "Mestre Yoda"
+      "conteudo": "\"Errar faz parte do desenvolvimento. Entender o erro é o que faz a gente evoluir.\"",
+      "autoria": "Aprendizado contínuo"
     },
     {
       "id": "5b8a",
-      "conteudo": "Na minha máquina funciona!",
-      "autoria": "Dev"
+      "conteudo": "\"Não é preciso saber tudo para começar, mas é preciso começar para aprender.\"",
+      "autoria": "Comece antes de estar pronto"
     },
     {
       "id": "68uy",
-      "conteudo": "Esse é de laranja que parece de limão, mas tem gosto de tamarindo!",
-      "autoria": "Chaves"
+      "conteudo": "\"Um problema bem compreendido já é metade do caminho para uma boa solução.\"",
+      "autoria": "Pensamento lógico"
     },
     {
       "id": "b807",
-      "conteudo": "Melhor professor, o fracasso é!",
-      "autoria": "Mestre Yoda"
+      "conteudo": "\"Cada projeto terminado representa uma nova habilidade conquistada.\"",
+      "autoria": "Evolução"
     },
     {
       "id": "9f3c",
-      "conteudo": "Você não é todo mundo!",
-      "autoria": "Mãe"
+      "conteudo": "\"Programar é transformar problemas em passos que uma máquina consegue executar.\"",
+      "autoria": "Lógica de programação"
     },
     {
       "id": "6a2b",
-      "conteudo": "Foi sem querer querendo!",
-      "autoria": "Chaves"
+      "conteudo": "\"A melhor forma de aprender uma tecnologia é construir algo com ela.\"",
+      "autoria": "Aprender fazendo"
     },
     {
       "id": "7e2a",
-      "conteudo": "Que a força esteja com você!",
-      "autoria": "Mestre Yoda"
+      "conteudo": "\"Código limpo não é apenas estética. É respeito por quem vai mantê-lo depois.\"",
+      "autoria": "Boas práticas"
     },
     {
       "id": "5c8f",
-      "conteudo": "Resolver o bug não consegue? Esfriar a cabeça vc deve.",
-      "autoria": "Mestre Yoda"
+      "conteudo": "\"Grandes sistemas são construídos a partir de pequenas funcionalidades que funcionam bem.\"",
+      "autoria": "Construção incremental"
     },
     {
       "id": "2d6e",
-      "conteudo": "Não faça drama, faça café! :)",
-      "autoria": "Dev"
+      "conteudo": "\"Curiosidade é uma das ferramentas mais importantes de quem trabalha com tecnologia.\"",
+      "autoria": "Mentalidade de desenvolvimento"
     },
     {
       "id": "3f1a",
-      "conteudo": "Conserta minha impressora?",
-      "autoria": "Grupo da família"
+      "conteudo": "\"A tecnologia muda rapidamente, por isso aprender a aprender é uma habilidade essencial.\"",
+      "autoria": "Aprender a aprender"
     },
     {
       "id": "8b4c",
-      "conteudo": "A vingança nunca é plena... mata a alma e a envenena...",
-      "autoria": "Seu Madruga"
+      "conteudo": "\"Resolver um bug é descobrir uma resposta que o código ainda não conseguiu encontrar.\"",
+      "autoria": "Debugging"
     },
     {
       "id": "4d2e",
-      "conteudo": "Se eu for aí e achar, eu esfrego na sua cara!",
-      "autoria": "Mãe"
+      "conteudo": "\"Boas soluções começam quando deixamos de perguntar apenas como fazer e passamos a perguntar por que fazer.\"",
+      "autoria": "Pensamento crítico"
     },
     {
-      "conteudo": "   Um dia lindo, para salvar vidas",
-      "autoria": "HOJE",
-      "id": "Jb9ZZ4JdYtQ"
+      "id": "Jb9ZZ4JdYtQ",
+      "conteudo": "\"Versionar o código é também registrar a evolução de uma ideia.\"",
+      "autoria": "Controle de versão"
+    },
+    {
+      "id": "rwWNmqRo87k",
+      "conteudo": "\"Um projeto simples pode ensinar mais do que horas apenas estudando teoria.\"",
+      "autoria": "Experiência prática"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
