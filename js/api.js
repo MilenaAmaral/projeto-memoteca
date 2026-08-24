@@ -1,4 +1,4 @@
-const URL_BASE = "https://sua-api-publica.com";
+const URL_BASE = "https://memoteca-api-65ih.onrender.com";
 
 const api = {
 
