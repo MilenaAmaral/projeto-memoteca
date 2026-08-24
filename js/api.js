@@ -1,4 +1,4 @@
-const URL_BASE = "http://localhost:3001";
+const URL_BASE = "https://sua-api-publica.com";
 
 const api = {
 
