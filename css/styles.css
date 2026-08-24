@@ -545,6 +545,98 @@ span {
   box-shadow: var(--glow-ciano);
 }
 
+.li-pensamento.editando {
+  border-color: var(--vidro-borda-hover);
+  box-shadow: var(--glow-ciano);
+  transform: translateY(-3px);
+}
+
+.campo-edicao-conteudo,
+.campo-edicao-autoria {
+  width: 100%;
+  outline: none;
+  font-family: var(--fonte-mono);
+  color: var(--texto-primario);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid var(--vidro-borda);
+  border-radius: var(--raio-sm);
+  transition: border-color var(--transicao-suave),
+    box-shadow var(--transicao-suave),
+    background var(--transicao-suave);
+}
+
+.campo-edicao-conteudo {
+  min-height: 120px;
+  margin-top: 64px;
+  margin-bottom: 16px;
+  padding: 16px;
+  resize: vertical;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.campo-edicao-autoria {
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.campo-edicao-conteudo:focus,
+.campo-edicao-autoria:focus {
+  border-color: var(--ciano);
+  box-shadow: var(--glow-foco);
+  background: rgba(34, 211, 238, 0.04);
+}
+
+.botao-salvar-inline,
+.botao-cancelar-inline {
+  padding: 8px 14px;
+  border-radius: var(--raio-sm);
+  font-family: var(--fonte-base);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform var(--transicao-rapida),
+    box-shadow var(--transicao-suave),
+    background var(--transicao-suave),
+    border-color var(--transicao-suave);
+}
+
+.botao-salvar-inline {
+  background: var(--gradiente-neon);
+  color: var(--bg-void);
+  border: 1px solid transparent;
+}
+
+.botao-salvar-inline:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.3);
+}
+
+.botao-salvar-inline:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.botao-cancelar-inline {
+  background: transparent;
+  color: var(--texto-secundario);
+  border: 1px solid var(--vidro-borda);
+}
+
+.botao-cancelar-inline:hover {
+  color: var(--branco);
+  border-color: var(--vidro-borda-hover);
+  background: var(--vidro-bg-hover);
+}
+
+.li-pensamento.editando .icones {
+  gap: 8px;
+  align-items: center;
+}
+
 .icone-aspas {
   position: absolute;
   top: 28px;
